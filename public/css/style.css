@@ -1,0 +1,153 @@
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
+.navbar{
+    height: 5rem;
+    background-color: #fff;
+}
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+.nav-link{
+    color: #222222 !important;
+}
+
+/*Footer*/
+
+.f-info-links,.f-info-socials,.f-info-brand{
+    width: 100%;
+}
+.f-info-links:hover{
+    text-decoration: underline;
+}
+
+.f-info{
+    height: 7rem;
+    line-height: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
+    background-color: #ebebeb;
+    text-align: center;
+}
+
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 2rem;
+}
+
+/*Cards*/
+
+.listing-card{
+    border: none !important;
+    margin-bottom: 2rem;
+
+}
+ .card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+ }
+ .card-body{
+    padding: 0 !important;
+ }
+  .card-text p{
+    font-weight: 400 !important;
+  }
+  .listing-link{
+    color: black;
+    text-decoration: none;
+  }
+
+  /*Card Effect*/
+
+  .card-img-overlay{
+    opacity: 0;
+  }
+  .card-img-overlay:hover{
+    background-color: rgb(255, 255, 255);
+    opacity: 0.2;
+  }
+
+  /*New Page*/
+
+  .add-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+  }
+
+  /*Edit Page*/
+
+  .edit-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+  }
+
+  /*Show Page*/
+
+  .show-img{
+      height: 30vh;
+  }
+  .show-card{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .btns{
+    display: flex;
+  }
+  .delete-btn{
+    border: none !important;
+  }
+
+  /* MAP */
+
+  #map{
+    height: 400px;
+    width: 80vh;
+    
+  }
+
+  /* Navbar */
+
+  #filters{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+   }
+   .filter{
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 1.5rem;
+    opacity: 0.7;
+   }
+   .filter:hover{
+    opacity: 1;
+    cursor: pointer;
+   }
+   .filter p {
+    font-size: 0.8rem;
+   }
+
+   .tax-info{
+    display: none;
+   }
+   .tax-toggle {
+    display: flex;
+    align-items: center;
+    
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin-left: 2rem;
+    height: 3.25rem;
+    padding: 1rem;
+    white-space: nowrap;
+   }
+   
