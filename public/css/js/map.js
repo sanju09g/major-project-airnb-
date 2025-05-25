@@ -1,11 +1,6 @@
 //public folder js file has no access to process.env variables only access to ejs so ejs store it in js variables then we can access here
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (typeof mapboxgl === "undefined") {
-    console.error("❌ mapboxgl is not loaded");
-    return;
-  }
-  
+
   mapboxgl.accessToken = mapToken;
     const map = new mapboxgl.Map({
         container: 'map', // container ID
@@ -18,5 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const marker = new mapboxgl.Marker({ color: "red" })
     .setLngLat(listing.geometry.coordinates)
     .setPopup(new mapboxgl.Popup({offset: 25})
-    .setHTML(`<h4>${listing.title}</h4><p>Exact location will be provided after booking</p>`))
+    .setHTML(`<h4>${listing.title}</h4><p>Exact location will be provided after booking</p>`)
+  )
     .addTo(map);
