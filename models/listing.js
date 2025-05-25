@@ -50,9 +50,10 @@ const listingSchema = new Schema({
     },
 });
 
-listingSchema.post("findOneAndDelete",async(listing)=>{
+listingSchema.post("findOneAndDelete",async(listing)=>{//un array ko delete karna hai jo listing.reviews wale array me aa rhi h
+
     if(listing){
- await Review.deleteMany({_id: {$in: listing.reviews}});
+ await Review.deleteMany({_id: {$in: listing.reviews}});//listing.ewviews me jitni bhi id h unkilist bana  lenge
     }
 });
 

@@ -2,12 +2,14 @@
 
    
     <div class="row mt-3">
+        <!-- offset-2 means spacing from left -->
         <div class="col-8 offset-2">
     <h3>Create a new list:</h3>
     <form method="post" action="/listings"  class="needs-validation" novalidate enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" name="listing[title]" placeholder="Add a title" class="form-control" required>
+            <!-- class="form-control" is a Bootstrap class that’s used to style form elements like input fields, <select>, and <textarea> with a clean and responsive look. -->
+            <input id="title" type="text" name="listing[title]" placeholder="Add a title" class="form-control" required> <!--listing[title] , listing is js object and title is its key-->
             <div class="valid-feedback">Title looks good!</div>
         </div>
        <div class="mb-3">
@@ -21,6 +23,7 @@
             <input  name="listing[price]"  placeholder="1200"  class="form-control" required>
             <div class="invalid-feedback">Please enter a valid price</div>
           </div>
+          <!-- col-md-8 means occupy 8 column till mid screen size -->
           <div class="mb-3 col-md-8">
             <label for="image" class="form-label">Upload image</label>
             <input type="file" name="listing[image]" placeholder="enter image url" class="form-control">

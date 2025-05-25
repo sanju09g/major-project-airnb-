@@ -1,7 +1,7 @@
 if(process.env.NODE_ENV != "production"){
-    require('dotenv').config();
+    require('dotenv').config();// if NODE_ENV(variable) is not for production use dotenv else dont use
 }
-// console.log(process.env);
+console.log(process.env);// env file info
 
 const express = require("express");
 const app = express();
@@ -53,8 +53,8 @@ const sessionOptions = {
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie:{
-        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    cookie:{//cookie persits for 7 days here
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,//7 days 24 hrs 60 min 60 sec 1000ms
         maxAge:  7 * 24 * 60 * 60 * 1000,
         httpOnly:true,
     },
@@ -64,12 +64,15 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 app.use(flash());
 
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
+app.use(passport.initialize());//Initializes Passport.
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+app.use(passport.session());//identify if same user sending request to different pages or not .Without this, Passport won’t be able to remember if a user is logged in across different requests.
+
+passport.use(new LocalStrategy(User.authenticate()));//Tells Passport to use the LocalStrategy for login.
+
+passport.serializeUser(User.serializeUser());// Defines how user data is stored in the session.
+
+passport.deserializeUser(User.deserializeUser());//Defines how to convert session ID back to user info.
 
 
 
@@ -93,13 +96,14 @@ app.get("/demouser",async (req,res)=>{
        email: "student@gmail.com",
        username: "delta-student"
     });
-   let registeredUser = await User.register(fakeUser,"helloworld");
+   let registeredUser = await User.register(fakeUser,"helloworld");//hello world is password
    res.send(registeredUser);
  });
 
 app.use((req,res,next)=>{
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
+   
     res.locals.currUser = req.user;
     next();
 });

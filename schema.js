@@ -1,7 +1,8 @@
 const Joi = require("joi");
 
+//Validation of server side
 module.exports.listingSchema = Joi.object({
-    listing: Joi.object({
+    listing: Joi.object({//listing nam ki object honi hi chahiye with below fields
         title: Joi.string().required(),
         description: Joi.string().required(),
         location: Joi.string().required(),

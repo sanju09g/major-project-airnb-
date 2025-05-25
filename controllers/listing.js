@@ -75,7 +75,7 @@ module.exports.index = async(req,res)=>{
     //    }
   
     let {id}= req.params;
-    let listing = await Listing.findByIdAndUpdate(id,{...req.body.listing});
+    let listing = await Listing.findByIdAndUpdate(id,{...req.body.listing});//req.body is a js object consists of parameters( listing is one of them) deconstructing for coverting parametrs to individual value
    if(typeof req.file!== "undefined"){
     let url = req.file.path;
     let filename = req.file.filename;

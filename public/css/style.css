@@ -1,21 +1,28 @@
 body{
+  /* font from google fonts */
     font-family: "Plus Jakarta Sans", sans-serif !important;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 .container{
+  /* flex: 1; is a shorthand CSS property used inside a flex container, and it means:
+
+"Let this element grow and fill up the available space equally with other flex items." */
     flex: 1;
 }
 .navbar{
     height: 5rem;
-    background-color: #fff;
+    /* text will not overlap with navbar */
+    background-color: #fff; 
+
 }
 .fa-compass{
     color: #fe424d;
     font-size: 2rem;
 }
 .nav-link{
+  /* Bootstrap styling ovverride */
     color: #222222 !important;
 }
 
@@ -54,6 +61,7 @@ body{
  .card-img-top {
     border-radius: 1rem !important;
     width: 100% !important;
+    /* Fits image with its cover */
     object-fit: cover !important;
  }
  .card-body{
