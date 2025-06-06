@@ -58,6 +58,7 @@ body{
     margin-bottom: 2rem;
 
 }
+
  .card-img-top {
     border-radius: 1rem !important;
     width: 100% !important;
@@ -70,6 +71,16 @@ body{
   .card-text p{
     font-weight: 400 !important;
   }
+  .badge-category {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 12px;
+    color: rgb(189, 2, 2);
+    text-transform: capitalize;
+  }
+  
   .listing-link{
     color: black;
     text-decoration: none;
@@ -113,6 +124,11 @@ body{
   }
   .delete-btn{
     border: none !important;
+  }
+  .show-detail{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   /* MAP */

@@ -11,8 +11,12 @@
     <div class="card col-6 offset-3 show-card listing-card">
         <img src="<%= listing.image.url %>" class="card-img-top show-img " alt="listing-img">
         <div class="card-body">
-          <p class="card-text">Owned by :
-            <%= listing.owner.username %> </p>
+          <div class="show-detail">
+            <div class="card-text">Owned by :
+              <%= listing.owner.username %> </div>
+              <div class="text-muted"><%= listing.category.toUpperCase() %></div>
+          </div>
+         
             <p class="card-text"> <%= listing.description %> </p>
             <p class="card-text"> &#x20B9;<%= listing.price.toLocaleString("en-IN") %></p> <!--currency comma standard-->  
             <p class="card-text"> <%= listing.location %> </p>

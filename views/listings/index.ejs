@@ -10,6 +10,12 @@
 
 
     <div id="filters">
+      <div class="filter">
+        <a href="/listings">
+          <div><i class="fa-solid fa-fire"></i></div>
+          <p>Trending</p>
+        </a>
+      </div>
        <div class="filter">
         <a class="filter-link" href="/listings/category/Rooms">
         <div><i class="fa-solid fa-bed"></i></div>
@@ -79,6 +85,10 @@
                     &#x20B9;<%= listing.price.toLocaleString("en-IN") %> /night 
                     <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
                   </p>
+                  <hr>
+                  <span class="badge bg-primary text-capitalize">
+                    <%= collection.category %>
+                  </span>
                 </div>
             
               </div>
