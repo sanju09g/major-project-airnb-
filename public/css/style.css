@@ -85,6 +85,16 @@ body{
     color: #fff !important; 
     text-transform: capitalize;
   }
+  .badge-category-show{
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 2px;
+    background-color:#333333af !important;
+    color: #fff !important; 
+    text-transform: capitalize;
+  }
   
   .listing-link{
     color: black;
@@ -130,6 +140,14 @@ body{
   }
   .btns{
     display: flex;
+  }
+  .fa-location-dot{
+    color: #fe424d;
+    font-size: medium;
+  }
+  .fa-globe{
+    color: #fe424d;
+    font-size: medium;
   }
   .delete-btn{
     border: none !important;

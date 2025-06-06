@@ -14,13 +14,13 @@
           <div class="show-detail">
             <div class="card-text"><b> Owned by :</b>
               <%= listing.owner.username %> </div>
-              <div class="text-muted"><%= listing.category.toUpperCase() %></div>
+              <div class="text-muted badge-category-show"><%= listing.category.toUpperCase() %></div>
           </div>
          
             <p class="card-text"> <%= listing.description %> </p>
-            <p class="card-text"> &#x20B9;<%= listing.price.toLocaleString("en-IN") %></p> <!--currency comma standard-->  
-            <p class="card-text"> <%= listing.location %> </p>
-            <p class="card-text"><%= listing.country %></p>
+            <p class="card-text"><b>&#x20B9;</b> <%= listing.price.toLocaleString("en-IN") %></p> <!--currency comma standard-->  
+            <p class="card-text"><i class="fa-solid fa-location-dot"></i> &nbsp;<%= listing.location %> </p>
+            <p class="card-text"><i class="fa-solid fa-globe"></i> &nbsp;<%= listing.country %></p>
         
         </div>
     </div>
