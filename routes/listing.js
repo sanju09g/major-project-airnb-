@@ -19,7 +19,7 @@ router
   router.get("/new",isLoggedIn,listingController.renderNewForm);
 
   //Category
-  router.get("/:categoryName", wrapAsync(listingController.switchCategory));
+  router.get("/category/:categoryName", wrapAsync(listingController.switchCategory));
 
   router.route("/:id")
   .get(wrapAsync(listingController.showListing))
