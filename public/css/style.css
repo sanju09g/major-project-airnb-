@@ -87,12 +87,11 @@ body{
   }
   .badge-category-show{
     display: inline-block;
-    padding: 6px 12px;
-    font-size: 1rem;
-    font-weight: 500;
+    padding: 3px 8px;
+    font-size: 0.90rem;
     border-radius: 2px;
-    background-color:#333333af !important;
-    color: #fff !important; 
+    background-color:#b5b0b0af !important;
+    color: #000000 !important; 
     text-transform: capitalize;
   }
   
