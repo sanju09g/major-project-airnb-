@@ -34,7 +34,13 @@
             <label for="country" class="form-label">Country</label>
         <input type="text" name="listing[country]" class="form-control" required value="<%= listing.country %>">
        </div>
+
     </div>
+    <div class="mb-3 col-4">
+        <label for="description" class="form-label">Category</label>
+        <input type="text" name="listing[category]" class="form-control" required >
+        <div class="invalid-feedback">Please enter a category</div>
+       </div>
         <button class="btn btn-dark edit-btn mt-3">Edit</button>
     </form>
 </div>
