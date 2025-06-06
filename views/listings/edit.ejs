@@ -25,22 +25,22 @@
            <input type="file" name="listing[image]" class="form-control" >
         </div>
     </div>
-    <div class="row">
-        <div class="mb-3 col-5">
+    <div class="mb-3 row">
+        <div class="col-5">
             <label for="location" class="form-label">Location</label>
         <input type="text" name="listing[location]" class="form-control" required value="<%= listing.location %>">
         </div>
-        <div class="mb-3 col-7">
+        <div class="col-4">
             <label for="country" class="form-label">Country</label>
         <input type="text" name="listing[country]" class="form-control" required value="<%= listing.country %>">
        </div>
-
-    </div>
-    <div class="mb-3 col-4">
+       <div class="col-3">
         <label for="description" class="form-label">Category</label>
         <input type="text" name="listing[category]" class="form-control" required >
         <div class="invalid-feedback">Please enter a category</div>
        </div>
+    </div>
+     
         <button class="btn btn-dark edit-btn mt-3">Edit</button>
     </form>
 </div>
