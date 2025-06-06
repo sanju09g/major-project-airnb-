@@ -18,7 +18,7 @@ const User = require("./models/user.js");
 
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo");// session storage for user related info cookie wagrah
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -41,7 +41,7 @@ const store = MongoStore.create({
     crypto: {
         secret:process.env.SECRET,
     },
-    touchAfter: 24 * 3600,
+    touchAfter: 24 * 3600,// interval between session updates if we dont interact with server
 });
 
 store.on("error",()=>{
@@ -91,14 +91,14 @@ async function main() {
 // app.get("/",(req,res)=>{
 //    res.send("Hi i am root");
 // });
-app.get("/demouser",async (req,res)=>{
-    let fakeUser = new User({
-       email: "student@gmail.com",
-       username: "delta-student"
-    });
-   let registeredUser = await User.register(fakeUser,"helloworld");//hello world is password
-   res.send(registeredUser);
- });
+// app.get("/demouser",async (req,res)=>{
+//     let fakeUser = new User({
+//        email: "student@gmail.com",
+//        username: "delta-student"
+//     });
+//    let registeredUser = await User.register(fakeUser,"helloworld");//hello world is password
+//    res.send(registeredUser);
+//  });
 
 app.use((req,res,next)=>{
     res.locals.success = req.flash("success");
@@ -113,6 +113,8 @@ app.use((req,res,next)=>{
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
+
+
  app.all("*",(req,res,next)=>{
      next(new ExpressError(404,"Page not found!"));
  });

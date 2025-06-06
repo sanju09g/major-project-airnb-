@@ -7,11 +7,24 @@ module.exports.index = async(req,res)=>{
     const allListings = await Listing.find({});
     res.render("listings/index.ejs",{allListings});
   };
+
   module.exports.renderNewForm = (req,res)=>{
     // console.log(req.user);
 
       res.render("listings/new.ejs");
   };
+
+  module.exports.switchCategory = async(req,res)=>{
+    let{categoryName} = req.params;
+    let allListings = await Listing.find({category:categoryName});
+    if(!(allListings && allListings.length))
+    {
+      req.flash("error","No match found!");
+      return res.redirect("/listings");
+    }
+    res.render("listings/index.ejs",{allListings});
+  }
+
 
   module.exports.showListing = async(req,res)=>{
     let {id}= req.params;
@@ -32,23 +45,21 @@ module.exports.index = async(req,res)=>{
 };
  module.exports.createListing = async (req,res,next)=>{
 
-  let response = await geocodingClient.forwardGeocode({
+  let response = await geocodingClient.forwardGeocode({ //returns coordinate
     query: req.body.listing.location,
     limit: 1
   })
     .send();
     
- 
-
-
+  // console.log(req.body.features[0 ].geometry);//returns an object consists a geometry key where you find coordinates array
     let url = req.file.path;
     let filename = req.file.filename;
     
     const newListing = new Listing(req.body.listing);
      newListing.owner = req.user._id;
      newListing.image = {url,filename};
-     newListing.geometry = response.body.features[0].geometry;
-     let savedListing = await newListing.save();
+     newListing.geometry = response.body.features[0].geometry;//coordinates 
+     await newListing.save();
      
      req.flash("success","New Listing Created!");
      res.redirect("/listings");
@@ -70,12 +81,9 @@ module.exports.index = async(req,res)=>{
 };
 
  module.exports.updateListing = async (req,res)=>{
-    // if(!req.body.listing){
-    //     next(new ExpressError(400,"Bad Request"));
-    //    }
-  
+
     let {id}= req.params;
-    let listing = await Listing.findByIdAndUpdate(id,{...req.body.listing});//req.body is a js object consists of parameters( listing is one of them) deconstructing for coverting parametrs to individual value
+    let listing = await Listing.findByIdAndUpdate(id,{...req.body.listing});
    if(typeof req.file!== "undefined"){
     let url = req.file.path;
     let filename = req.file.filename;

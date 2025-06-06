@@ -143,7 +143,10 @@ body{
    .filter p {
     font-size: 0.8rem;
    }
-
+.filter-link{
+  text-decoration: none;
+  color: #ebebeb;
+}
    .tax-info{
     display: none;
    }
