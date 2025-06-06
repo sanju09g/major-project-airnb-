@@ -77,7 +77,8 @@ body{
     font-size: 0.85rem;
     font-weight: 500;
     border-radius: 12px;
-    color: rgb(189, 2, 2);
+    background-color: #fe424d;
+    /* color: rgb(189, 2, 2); */
     text-transform: capitalize;
   }
   
@@ -161,7 +162,7 @@ body{
    }
 .filter-link{
   text-decoration: none;
-  color:#6f6e6e;
+  color:#333333;
 }
    .tax-info{
     display: none;
