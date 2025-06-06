@@ -82,11 +82,15 @@ body{
     font-weight: 500;
     border-radius: 12px;
     background-color: #fe424d !important;
-    /* color: rgb(189, 2, 2); */
+    color: #fff !important; 
     text-transform: capitalize;
   }
   
   .listing-link{
+    color: black;
+    text-decoration: none;
+  }
+  .listing-link:hover{
     color: black;
     text-decoration: none;
   }
