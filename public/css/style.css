@@ -93,7 +93,7 @@ body{
     text-transform: capitalize;
   }
   .space{
-    line-height: 2;
+    line-height: 2 !important;
   }
   
   .listing-link{
