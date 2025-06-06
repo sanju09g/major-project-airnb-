@@ -50,7 +50,14 @@ body{
     font-size: 1.2rem;
     margin-right: 2rem;
 }
-
+.foot-link{
+  text-decoration: none !important;
+  color:#222222 !important;
+}
+.foot-link:hover{
+  text-decoration: none !important;
+  color:#222222 !important;
+}
 /*Cards*/
 
 .listing-card{
@@ -85,7 +92,9 @@ body{
     color: #fff !important; 
     text-transform: capitalize;
   }
-  
+  .space{
+    line-height: 2;
+  }
   
   .listing-link{
     color: black;
