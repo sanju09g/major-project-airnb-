@@ -12,9 +12,9 @@ module.exports.isLoggedIn = (req,res,next)=>{
         
           if( req.session.redirectUrl != "/" && req.session.redirectUrl != "/listings"){
             req.flash("error","Login credential required!");
-            return res.redirect("/login");
+           
           }
-
+          return res.redirect("/login");
       }
     next();
 };
