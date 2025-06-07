@@ -10,7 +10,7 @@ const upload = multer({storage});// multer now store files in cloudinary's stora
 
 router
     .route("/")
-    .get( wrapAsync(listingController.index))
+    .get(isLoggedIn, wrapAsync(listingController.index))
     .post(isLoggedIn, upload.single('listing[image]'),validateListing, wrapAsync(listingController.createListing)
     );
 
