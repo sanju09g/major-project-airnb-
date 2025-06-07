@@ -9,7 +9,7 @@ module.exports.isLoggedIn = (req,res,next)=>{
         if(!req.isAuthenticated()){
           //saving requestUrl
           req.session.redirectUrl = req.originalUrl;
-          if(req.session.redirectUrl || req.session.redirectUrl != "undefined"){
+          if(req.session.redirectUrl && req.session.redirectUrl != "undefined"){
             req.flash("error","Login credential required!");
             return res.redirect("/login");
           }
