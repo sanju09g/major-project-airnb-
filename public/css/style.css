@@ -123,6 +123,7 @@ body {
 
 .card-img-overlay {
   opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 
 .card-img-overlay:hover {
