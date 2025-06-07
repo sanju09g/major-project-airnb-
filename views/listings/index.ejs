@@ -71,29 +71,26 @@
        </div>
     </div>
     <!-- row-cols-lg-3 row-cols-md-2 row-cols-sm-1 for how many cards display within a row with differnent screen width -->
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 mt-2 gap-1 gap-sm-2 gap-md-3 gap-lg-4">
-        <% for(let listing of allListings){ %>
-            <a class="listing-link" href="/listings/<%= listing._id %>">
-            <div class="card listing-card w-100 w-sm-75 w-md-50 w-lg-25">
-              
-                <img src="<%= listing.image.url %>" class="card-img-top card-img" alt="listing-img" style="height: 20rem;">
-                <!-- Set all image height to 20rem -->
-                <div class="card-img-overlay"><i class="fa-regular fa-compass"></i></div>
-
-                <div class="card-body">
-                  <p class="card-text mt-3"><b><%= listing.title %></b></p>
-                   <p> &#x20B9;<%= listing.price.toLocaleString("en-IN") %> /night 
-                    <i class="tax-info"> &nbsp; &nbsp; +18% GST</i></p> 
-                  <hr>
-                  <span class="badge-category">
-                    <%= listing.category %>
-                  </span>
-                </div>
-            
-              </div>
-            </a>
-              <% } %>
-    </div>
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 mt-2 
+    g-1 g-sm-2 g-md-3 g-lg-4">
+<% for(let listing of allListings){ %>
+<div class="col">
+<a class="listing-link" href="/listings/<%= listing._id %>">
+<div class="card listing-card h-100">
+  <img src="<%= listing.image.url %>" class="card-img-top card-img" alt="listing-img" style="height: 20rem;">
+  <div class="card-img-overlay"><i class="fa-regular fa-compass"></i></div>
+  <div class="card-body">
+    <p class="card-text mt-3"><b><%= listing.title %></b></p>
+    <p>&#x20B9;<%= listing.price.toLocaleString("en-IN") %> /night 
+      <i class="tax-info"> &nbsp; &nbsp; +18% GST</i></p> 
+    <hr>
+    <span class="badge-category"><%= listing.category %></span>
+  </div>
+</div>
+</a>
+</div>
+<% } %>
+</div>
 </body>
 <script>
    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
