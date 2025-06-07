@@ -74,7 +74,7 @@
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 mt-2">
         <% for(let listing of allListings){ %>
             <a class="listing-link" href="/listings/<%= listing._id %>">
-            <div class="card listing-card w-75">
+            <div class="card listing-card w-100 w-sm-75 w-md-50 w-lg-25">
               
                 <img src="<%= listing.image.url %>" class="card-img-top card-img" alt="listing-img" style="height: 20rem;">
                 <!-- Set all image height to 20rem -->
