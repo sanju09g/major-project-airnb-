@@ -5,16 +5,16 @@
     <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" name="listing[title]" class="form-control" required value="<%= listing.title %>">
+        <input type="text" name="listing[title]" class="form-control glow-field" required value="<%= listing.title %>">
       </div>
        <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea cols="20" rows="5" type="text" class="form-control" required name="listing[description]" ><%= listing.description %></textarea>
+        <textarea cols="20" rows="5" type="text" class="form-control glow-field" required name="listing[description]" ><%= listing.description %></textarea>
        </div>
        <div class="row">
        <div class="mb-3 col-md-4">
         <label for="price" class="form-label">Price</label>
-        <input type="number" name="listing[price]" class="form-control" required value="<%= listing.price %>">
+        <input type="number" name="listing[price]" class="form-control glow-field" required value="<%= listing.price %>">
         </div>
         <div class="mb-3">
              Original Listing Image <br>
@@ -22,21 +22,21 @@
         </div>
         <div class="mb-3 col-md-8">
             <label for="image" class="form-label">Upload New Image</label>
-           <input type="file" name="listing[image]" class="form-control" >
+           <input type="file" name="listing[image]" class="form-control glow-field" >
         </div>
     </div>
     <div class="mb-3 row">
         <div class="col-5">
             <label for="location" class="form-label">Location</label>
-        <input type="text" name="listing[location]" class="form-control" required value="<%= listing.location %>">
+        <input type="text" name="listing[location]" class="form-control glow-field" required value="<%= listing.location %>">
         </div>
         <div class="col-4">
             <label for="country" class="form-label">Country</label>
-        <input type="text" name="listing[country]" class="form-control" required value="<%= listing.country %>">
+        <input type="text" name="listing[country]" class="form-control glow-field" required value="<%= listing.country %>">
        </div>
        <div class="col-3">
         <label for="description" class="form-label">Category</label>
-        <input type="text" name="listing[category]" class="form-control" required >
+        <input type="text" name="listing[category]" class="form-control glow-field" required >
         <div class="invalid-feedback">Please enter a category</div>
        </div>
     </div>
