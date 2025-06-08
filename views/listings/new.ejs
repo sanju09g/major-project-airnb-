@@ -1,13 +1,12 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="container mt-4">
+<div class="container">
     <div class="row justify-content-center">
-      <!-- Responsive column width -->
+    
       <div class="col-12 col-sm-12 col-md-10 col-lg-8">
         <h3>Create a new list:</h3>
         <form method="post" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
-          
-          <!-- Title -->
+     
           <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input id="title" type="text" name="listing[title]" placeholder="Add a title" class="form-control" required>
@@ -48,12 +47,12 @@
             </div>
             <div class="mb-3 col-12 col-md-3">
               <label for="category" class="form-label">Category</label>
-              <input type="text" name="listing[category]" class="form-control" placeholder="Enter category" required>
+              <input type="text" name="listing[category]" class="form-control" placeholder="category.." required>
               <div class="invalid-feedback">Please enter a category</div>
             </div>
           </div>
   
-          <button class="btn btn-dark add-btn mt-3">Add list</button>
+          <button class="btn btn-dark add-btn mt-3 mb-3">Add list</button>
         </form>
       </div>
     </div>
