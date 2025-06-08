@@ -1,48 +1,59 @@
 <% layout("/layouts/boilerplate") %>
-    <div class="row mt-3">
-        <div class="col-8 offset-2">
-    <h3>Edit your list:</h3>
-    <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
-      <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" name="listing[title]" class="form-control glow-field" required value="<%= listing.title %>">
-      </div>
-       <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea cols="20" rows="5" type="text" class="form-control glow-field" required name="listing[description]" ><%= listing.description %></textarea>
-       </div>
-       <div class="row">
-       <div class="mb-3 col-md-4">
-        <label for="price" class="form-label">Price</label>
-        <input type="number" name="listing[price]" class="form-control glow-field" required value="<%= listing.price %>">
-        </div>
-        <div class="mb-3">
-             Original Listing Image <br>
-             <img src="<%= originalImageUrl %>" alt="listing-img">
-        </div>
-        <div class="mb-3 col-md-8">
-            <label for="image" class="form-label">Upload New Image</label>
-           <input type="file" name="listing[image]" class="form-control glow-field" >
-        </div>
-    </div>
-    <div class="mb-3 row">
-        <div class="col-5">
-            <label for="location" class="form-label">Location</label>
-        <input type="text" name="listing[location]" class="form-control glow-field" required value="<%= listing.location %>">
-        </div>
-        <div class="col-4">
-            <label for="country" class="form-label">Country</label>
-        <input type="text" name="listing[country]" class="form-control glow-field" required value="<%= listing.country %>">
-       </div>
-       <div class="col-3">
-        <label for="description" class="form-label">Category</label>
-        <input type="text" name="listing[category]" class="form-control glow-field" required >
-        <div class="invalid-feedback">Please enter a category</div>
-       </div>
-    </div>
-     
-        <button class="btn btn-dark edit-btn mt-3">Edit</button>
-    </form>
-</div>
-</div>
 
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8">
+      <h3>Edit your list:</h3>
+
+      <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+  
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" name="listing[title]" class="form-control glow-field" required value="<%= listing.title %>">
+        </div>
+
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea cols="20" rows="5" name="listing[description]" class="form-control glow-field" required><%= listing.description %></textarea>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-12 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" name="listing[price]" class="form-control glow-field" required value="<%= listing.price %>">
+          </div>
+
+          
+          <div class="mb-3 col-12">
+            <label class="form-label d-block">Original Listing Image</label>
+            <img src="<%= originalImageUrl %>" alt="listing-img" class="img-fluid rounded shadow-sm">
+          </div>
+
+          <div class="mb-3 col-12 col-md-8">
+            <label for="image" class="form-label">Upload New Image</label>
+            <input type="file" name="listing[image]" class="form-control glow-field">
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="mb-3 col-12 col-sm-6 col-md-5">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" name="listing[location]" class="form-control glow-field" required value="<%= listing.location %>">
+          </div>
+          <div class="mb-3 col-12 col-sm-6 col-md-4">
+            <label for="country" class="form-label">Country</label>
+            <input type="text" name="listing[country]" class="form-control glow-field" required value="<%= listing.country %>">
+          </div>
+          <div class="mb-3 col-12 col-md-3">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" name="listing[category]" class="form-control glow-field" required>
+            <div class="invalid-feedback">Please enter a category</div>
+          </div>
+        </div>
+
+        <button class="btn btn-dark edit-btn mt-3 mb-3">Edit</button>
+      </form>
+    </div>
+  </div>
+</div>
