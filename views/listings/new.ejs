@@ -1,55 +1,61 @@
 <% layout("/layouts/boilerplate") %>
 
-   
-    <div class="row mt-3">
-        <!-- offset-2 means spacing from left -->
-        <div class="col-8 offset-2">
-    <h3>Create a new list:</h3>
-    <form method="post" action="/listings"  class="needs-validation" novalidate enctype="multipart/form-data">
-        <div class="mb-3">
+<div class="container mt-4">
+    <div class="row justify-content-center">
+      <!-- Responsive column width -->
+      <div class="col-12 col-sm-12 col-md-10 col-lg-8">
+        <h3>Create a new list:</h3>
+        <form method="post" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
+          
+          <!-- Title -->
+          <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <!-- class="form-control" is a Bootstrap class that’s used to style form elements like input fields, <select>, and <textarea> with a clean and responsive look. -->
-            <input id="title" type="text" name="listing[title]" placeholder="Add a title" class="form-control" required> <!--listing[title] , listing is js object and title is its key-->
+            <input id="title" type="text" name="listing[title]" placeholder="Add a title" class="form-control" required>
             <div class="valid-feedback">Title looks good!</div>
-        </div>
-       <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea cols="20" rows="5" type="text" name="listing[description]" class="form-control" required ></textarea>
-        <div class="invalid-feedback">Please enter a short description</div>
-       </div>
-       <div class="row">
-        <div class="mb-3 col-md-4">
-            <label for="price" class="form-label">Price</label>
-            <input  name="listing[price]"  placeholder="1200"  class="form-control" required>
-            <div class="invalid-feedback">Please enter a valid price</div>
           </div>
-          <!-- col-md-8 means occupy 8 column till mid screen size -->
-          <div class="mb-3 col-md-8">
-            <label for="image" class="form-label">Upload image</label>
-            <input type="file" name="listing[image]" placeholder="enter image url" class="form-control">
-           </div>
-       </div>
-      
-       <div class="mb-3 row">
-        <div class="col-5">
-            <label for="location" class="form-label">Location</label>
-            <input type="text" name="listing[location]" placeholder="kolkata,West Bengal" class="form-control" required>
-            <div class="invalid-feedback">Location should be valid</div>
-        </div>
-       
-        <div class="col-4">
-            <label for="country" class="form-label">Country</label>
-            <input type="text" name="listing[country]" placeholder="India" class="form-control" required >
-            <div class="invalid-feedback">Country should be valid</div>
-        </div>
-        <div class="col-3">
-            <label for="description" class="form-label">Category</label>
-            <input type="text" name="listing[category]" class="form-control" placeholder="Enter category" required >
-            <div class="invalid-feedback">Please enter a category</div>
-           </div>
+  
+          <!-- Description -->
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea cols="20" rows="5" name="listing[description]" class="form-control" required></textarea>
+            <div class="invalid-feedback">Please enter a short description</div>
+          </div>
+  
+          <!-- Price & Image Upload -->
+          <div class="row">
+            <div class="mb-3 col-12 col-md-4">
+              <label for="price" class="form-label">Price</label>
+              <input name="listing[price]" placeholder="1200" class="form-control" required>
+              <div class="invalid-feedback">Please enter a valid price</div>
+            </div>
+            <div class="mb-3 col-12 col-md-8">
+              <label for="image" class="form-label">Upload image</label>
+              <input type="file" name="listing[image]" class="form-control">
+            </div>
+          </div>
+  
+          <!-- Location, Country, Category -->
+          <div class="row">
+            <div class="mb-3 col-12 col-sm-6 col-md-5">
+              <label for="location" class="form-label">Location</label>
+              <input type="text" name="listing[location]" placeholder="Kolkata, West Bengal" class="form-control" required>
+              <div class="invalid-feedback">Location should be valid</div>
+            </div>
+            <div class="mb-3 col-12 col-sm-6 col-md-4">
+              <label for="country" class="form-label">Country</label>
+              <input type="text" name="listing[country]" placeholder="India" class="form-control" required>
+              <div class="invalid-feedback">Country should be valid</div>
+            </div>
+            <div class="mb-3 col-12 col-md-3">
+              <label for="category" class="form-label">Category</label>
+              <input type="text" name="listing[category]" class="form-control" placeholder="Enter category" required>
+              <div class="invalid-feedback">Please enter a category</div>
+            </div>
+          </div>
+  
+          <button class="btn btn-dark add-btn mt-3">Add list</button>
+        </form>
+      </div>
     </div>
-       <button class="btn btn-dark add-btn mt-3">Add list</button>
-    </form>
-</div>
-</div>
-
+  </div>
+  
