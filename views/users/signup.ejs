@@ -1,5 +1,11 @@
 <% layout("/layouts/boilerplate") %>
-
+<style>
+    @media (max-width:577px) {
+        .signup-p{
+            font-size: 0.80rem !important;
+        }
+    }
+</style>
 <div class="row justify-content-center">
     <h2 class="col-12 col-sm-12 col-md-10 col-lg-8 fw-semibold display-6">Signup on <span style="color: #fe424d;">Wanderlust</span></h2>
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 mt-2">
@@ -11,12 +17,12 @@
             <label for="email" class="form-label">Email</label>
             <input type="email" name="email" id="email"  class="form-control glow-field" placeholder="Enter your existing email" required>
         </div>
-        <div class="mb-3">
+        <div class="mb-4">
             <label for="password" class="form-label">Password</label>
             <input type="password" name="password" id="password" placeholder="Create a password"  class="form-control glow-field" required>
         </div>
         <button class="btn edit-btn">SignUp</button>
         </form>
-        <p class="mt-1" style="text-align: center;">Already have an account? <a style="text-decoration: none;" href="/login">Login here</a> </p>
+        <p class="mt-4 signup-p" style="text-align: center;">Already have an account? <a style="text-decoration: none;" href="/login">Login here</a> </p>
     </div>
 </div>

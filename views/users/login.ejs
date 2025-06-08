@@ -1,6 +1,12 @@
 
 <% layout("/layouts/boilerplate") %>
-
+<style>
+    @media (max-width:577px) {
+        .login-p{
+            font-size: 0.80rem !important;
+        }
+    }
+</style>
 <div class="row justify-content-center">
     <h2 class="col-12 col-sm-12 col-md-10 col-lg-8 fw-semibold display-6" >
         Login to <span style="color: #fe424d;">Wanderlust</span>
@@ -11,7 +17,7 @@
             <input  type="text" name="username" id="username" placeholder="Enter your username"  class="form-control glow-field" required>
             <div class="invalid-feedback">username required!</div>
             <br>
-        <div class="mb-3">
+        <div class="mb-4">
             <label for="password" class="form-label">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter password"  class="form-control glow-field" required>
             <div class="invalid-feedback">password required!</div>
@@ -19,6 +25,6 @@
         
         <button class="btn edit-btn">Login</button>
         </form>
-        <p class="mt-2" style="text-align: center;">Don't have any account? <a style="text-decoration: none;" href="/signup">Signup here</a> </p>
+        <p class="mt-4 login-p" style="text-align: center;">Don't have any account? <a style="text-decoration: none;" href="/signup">Signup here</a> </p>
     </div>
 </div>
