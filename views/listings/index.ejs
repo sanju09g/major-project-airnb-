@@ -129,16 +129,22 @@
     </div>
 </body>
 <script>
-   let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-   taxSwitch.addEventListener("click", ()=>{
-     let taxInfo = document.getElementsByClassName("tax-info");
-     for(info of taxInfo){
-      if(info.style.display != "inline"){
-       info.style.display = "inline";
-     }
-      else{
-        info.style.display = "none";
-      }
+  function toggleTaxInfo() {
+    const taxInfo = document.getElementsByClassName("tax-info");
+    for (let info of taxInfo) {
+      info.style.display = (info.style.display !== "inline") ? "inline" : "none";
     }
-   });
+  }
+
+  // Desktop toggle
+  const taxSwitchDesktop = document.getElementById("flexSwitchCheckDefault");
+  if (taxSwitchDesktop) {
+    taxSwitchDesktop.addEventListener("click", toggleTaxInfo);
+  }
+
+  // Mobile toggle
+  const taxSwitchMobile = document.getElementById("flexSwitchMobile");
+  if (taxSwitchMobile) {
+    taxSwitchMobile.addEventListener("click", toggleTaxInfo);
+  }
 </script>
