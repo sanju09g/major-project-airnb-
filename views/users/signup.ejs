@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate") %>
 
 <div class="row justify-content-center">
-    <h2 class="col-12 col-sm-12 col-md-10 col-lg-8 fw-600 display-6">Signup on <span style="color: #fe424d;">Wanderlust</span></h2>
+    <h2 class="col-12 col-sm-12 col-md-10 col-lg-8 fw-semibold display-6">Signup on <span style="color: #fe424d;">Wanderlust</span></h2>
     <div class="col-12 col-sm-12 col-md-10 col-lg-8 mt-2">
         <form action="/signup" novalidate method="post" class="needs-validation">
             <label for="username" class="form-label">Username</label>
@@ -9,7 +9,7 @@
             <div class="valid-feedback">Looks good!</div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" id="email"  class="form-control glow-field" required>
+            <input type="email" name="email" id="email"  class="form-control glow-field" placeholder="Enter your existing email" required>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
