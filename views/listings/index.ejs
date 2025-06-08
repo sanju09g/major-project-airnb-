@@ -9,67 +9,100 @@
 
 
 
-    <div id="filters">
-      <div class="filter">
-        <a class="filter-link" href="/listings">
-          <div><i class="fa-solid fa-fire"></i></div>
-          <p>Trending</p>
-        </a>
-      </div>
-       <div class="filter">
-        <a class="filter-link" href="/listings/category/Rooms">
+ <!-- Filters -->
+<div id="filters" class="d-flex flex-wrap align-items-center justify-content-between">
+  <!-- Normal View: Visible above 1201px -->
+  <div class="d-none d-xl-flex flex-wrap">
+    <!-- Each Filter Button -->
+    <div class="filter">
+      <a class="filter-link" href="/listings">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </a>
+    </div>
+    <div class="filter">
+      <a class="filter-link" href="/listings/category/Rooms">
         <div><i class="fa-solid fa-bed"></i></div>
         <p>Rooms</p>
       </a>
-       </div>
-       <div class="filter">
-        <a class="filter-link" href="/listings/category/Iconic cities">
+    </div>
+    <div class="filter">
+      <a class="filter-link" href="/listings/category/Iconic cities">
         <div><i class="fa-solid fa-mountain-city"></i></div>
         <p>Iconic cities</p>
       </a>
-       </div>
-        <div class="filter">
-          <a class="filter-link" href="/listings/category/Mountains">
+    </div>
+    <div class="filter">
+      <a class="filter-link" href="/listings/category/Mountains">
         <div><i class="fa-solid fa-mountain"></i></div>
         <p>Mountains</p>
       </a>
-       </div>
-       <div class="filter">
-        <a class="filter-link" href="/listings/category/Pools">
+    </div>
+    <div class="filter">
+      <a class="filter-link" href="/listings/category/Pools">
         <div><i class="fa-solid fa-person-swimming"></i></div>
         <p>Amazing pools</p>
       </a>
-       </div>
-       
-       <div class="filter">
-        <a class="filter-link" href="/listings/category/Farms">
+    </div>
+    <div class="filter">
+      <a class="filter-link" href="/listings/category/Farms">
         <div><i class="fa-brands fa-cow"></i></div>
         <p>Farms</p>
-        </a>
-       </div> <div class="filter">
-        <a  class="filter-link" href="/listings/category/Arctic">
+      </a>
+    </div>
+    <div class="filter">
+      <a class="filter-link" href="/listings/category/Arctic">
         <div><i class="fa-regular fa-snowflake"></i></div>
         <p>Arctic</p>
       </a>
-       </div>
-       <div class="filter">
-        <a class="filter-link" href="/listings/category/Domes">
+    </div>
+    <div class="filter">
+      <a class="filter-link" href="/listings/category/Domes">
         <div><i class="fa-solid fa-igloo"></i></div>
         <p>Domes</p>
       </a>
-       </div> <div class="filter">
-        <a class="filter-link" href="/listings/category/House boats">
+    </div>
+    <div class="filter">
+      <a class="filter-link" href="/listings/category/House boats">
         <div><i class="fa-solid fa-ship"></i></div>
         <p>House boats</p>
       </a>
-       </div>
-       <div class="tax-toggle">
-        <div class="form-check-reverse form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault">&nbsp; Display total after taxes</label>
-        </div>
-       </div>
     </div>
+  </div>
+
+  <!-- Mobile View: Dropdown -->
+  <div class="d-xl-none w-100">
+    <div class="dropdown d-flex justify-content-between align-items-center">
+      <select class="form-select w-75" onchange="location = this.value;">
+        <option selected disabled>Choose category</option>
+        <option value="/listings">Trending</option>
+        <option value="/listings/category/Rooms">Rooms</option>
+        <option value="/listings/category/Iconic cities">Iconic cities</option>
+        <option value="/listings/category/Mountains">Mountains</option>
+        <option value="/listings/category/Pools">Amazing pools</option>
+        <option value="/listings/category/Farms">Farms</option>
+        <option value="/listings/category/Arctic">Arctic</option>
+        <option value="/listings/category/Domes">Domes</option>
+        <option value="/listings/category/House boats">House boats</option>
+      </select>
+
+      <!-- Tax Toggle (right-aligned) -->
+      <div class="form-check form-switch ms-3">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchMobile">
+        <label class="form-check-label" for="flexSwitchMobile">Tax</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tax Toggle (desktop) -->
+  <div class="tax-toggle d-none d-xl-block">
+    <div class="form-check-reverse form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">&nbsp; Display total after taxes</label>
+    </div>
+  </div>
+</div>
+
     <!-- row-cols-lg-3 row-cols-md-2 row-cols-sm-1 for how many cards display within a row with differnent screen width -->
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 mt-2 ">
         <% for(let listing of allListings){ %>
