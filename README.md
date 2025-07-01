@@ -2,9 +2,12 @@
 
 📌 Project Overview
 
-   Wanderlust is a full-stack Airbnb clone built with Node.js and Express.js using the MVC architecture. It allows users to explore listings, create and manage their own stays, and leave reviews — all while enforcing user authentication and authorization. The app features category-based filtering and Mapbox integration for interactive maps.
+   Wanderlust is a responsive full-stack Airbnb clone built with Node.js and Express.js using the MVC architecture. It allows users to explore listings, create and manage their own stays, and leave reviews — all      while enforcing user authentication and authorization. The app features category-based filtering and Mapbox integration for interactive maps.
+   
    
 ## 🚀 Features
+
+  -  Clean and responsive UI for different screen sizes
 
   - User Authentication (Signup / Login / Logout)
 
