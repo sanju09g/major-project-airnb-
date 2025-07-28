@@ -11,7 +11,7 @@ const cron = require("node-cron");
 const path = require("path");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
-const { cleanupExpiredBookings } = require("./controllers/collection.js"); 
+const { cleanupExpiredBookings } = require("./controllers/listing.js"); 
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
