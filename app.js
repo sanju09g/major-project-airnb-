@@ -7,10 +7,11 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const port = 8080;
-
+const cron = require("node-cron");
 const path = require("path");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
+const { cleanupExpiredBookings } = require("./controllers/collection.js"); 
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -31,6 +32,7 @@ app.set("view engine", "ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
@@ -60,6 +62,15 @@ const sessionOptions = {
     },
 };
 
+cron.schedule("0 0 * * *", async () => {
+    console.log("⏰ Running auto-cleanup of expired bookings...");
+    try {
+      await cleanupExpiredBookings();
+      console.log("✅ Cleanup complete.");
+    } catch (error) {
+      console.error("❌ Cleanup failed:", error);
+    }
+  });
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -70,8 +81,10 @@ app.use(passport.session());//identify if same user sending request to different
 
 passport.use(new LocalStrategy(User.authenticate()));//Tells Passport to use the LocalStrategy for login.
 
+//If login is successful, Passport **stores the user ID** in the session using:
 passport.serializeUser(User.serializeUser());// Defines how user data is stored in the session.
 
+//This fetches the user from the database using the session ID and attaches it as req.user.
 passport.deserializeUser(User.deserializeUser());//Defines how to convert session ID back to user info.
 
 

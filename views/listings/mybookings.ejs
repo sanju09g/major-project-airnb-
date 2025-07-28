@@ -1,0 +1,44 @@
+<% layout("/layouts/boilerplate") %>
+
+<% if(user.bookings.length==0 ){ %>
+
+  
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h3>No Bookings</h3>
+    <form action="/collections" class="mt-2">
+      <button type="submit" class="btn btn-dark mt-2">Browse Hotels</button>
+    </form>
+  </div>
+  
+     <% } else{%>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"><i class="fa-regular fa-compass"></i></th>
+            <th scope="col">Wanderlust Hotel</th>
+            <th scope="col">CheckIn</th>
+            <th scope="col">CheckOut</th>
+            <th scope="col">Room Type</th>
+          </tr>
+        </thead>
+        <tbody>
+     <% user.bookings.forEach((booking, i) => { %>
+      <tr>
+        <th scope="row"><%= i + 1 %></th>
+
+        <td>
+          <% if (booking.collectionId) { %>
+            <%= booking.collectionId.title %>
+          <% } else { %>
+            <em>Listing Deleted</em>
+          <% } %>
+        </td>
+
+        <td><%= booking.checkIn.toDateString() %></td>
+        <td><%= booking.checkOut.toDateString() %></td>
+        <td><%= booking.roomType %></td>
+      </tr>
+    <% }) %>
+    <% } %>
+  </tbody>
+</table>

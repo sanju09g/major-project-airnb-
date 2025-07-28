@@ -248,3 +248,21 @@ body {
   padding: 1rem;
   white-space: nowrap;
 }
+#book{
+    
+  float: right !important;
+ 
+}
+.book-btn{
+  background-color: #fe424d !important;
+  color: white !important;
+  font-weight: 400 !important;
+}
+.book-btn:hover{
+  background-color:  #fe424fe2 !important;
+}
+
+.booked{
+  background-color: gainsboro !important;
+  color: #000 !important;
+}

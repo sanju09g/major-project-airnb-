@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
-const {isLoggedIn, isOwner,validateListing} = require("../middleware.js");
+const {isLoggedIn, isOwner,validateListing, validateBookingFromJoi} = require("../middleware.js");
 const listingController = require("../controllers/listing.js");
 const multer = require("multer");
 // const upload = multer({dest: "uploads/"}); to store files in uploads folder
@@ -18,8 +18,23 @@ router
   //New Route
   router.get("/new",isLoggedIn,listingController.renderNewForm);
 
+  router.get("/check/cleanup-bookings", wrapAsync(listingController.cleanupExpiredBookings));
+
+router.get("/mybookings",isLoggedIn, wrapAsync(listingController.showBookings));
+
   //Category
   router.get("/category/:categoryName", wrapAsync(listingController.switchCategory));
+
+  router.get(
+    "/booking/:id",isLoggedIn,
+    wrapAsync(listingController.renderBookingForm)
+  );
+  
+  router.post(
+    "/:id/booking",isLoggedIn,validateBookingFromJoi,
+    wrapAsync(listingController.bookListing)
+  );
+  
 
   router.route("/:id")
   .get(wrapAsync(listingController.showListing))

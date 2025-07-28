@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
+const User = require('./booking.js');
+const Booking = require("./booking.js");
 
 const listingSchema = new Schema({
     title: {
@@ -53,15 +55,38 @@ const listingSchema = new Schema({
    category:{
     type:String,
     enum:['Rooms','Iconic cities', 'Mountains','Pools', 'Camping','Farms','Arctic','Domes','House boats']
-   }
+   },
+   isBooked: {
+    type: Boolean,
+    default: false
+  }
 });
 
-listingSchema.post("findOneAndDelete",async(listing)=>{//un array ko delete karna hai jo listing.reviews wale array me aa rhi h
+listingSchema.post("findOneAndDelete", async function (listing) {
+    if (!listing) return;
 
-    if(listing){
- await Review.deleteMany({_id: {$in: listing.reviews}});//listing.ewviews me jitni bhi id h unkilist bana  lenge
+    // 1. Delete related reviews
+    if (listing.reviews && listing.reviews.length > 0) {
+        await Review.deleteMany({ _id: { $in: listing.reviews } });
+    }
+
+    // 2. Find related bookings (if listings have bookings)
+    const bookings = await Booking.find({ listingId: listing._id });
+
+    if (bookings.length > 0) {
+        // 3. Remove booking IDs from users
+        for (const booking of bookings) {
+            await User.updateMany(
+                { bookings: booking._id },
+                { $pull: { bookings: booking._id } }
+            );
+        }
+
+        // 4. Delete the bookings themselves
+        await Booking.deleteMany({ listingId: listing._id });
     }
 });
+
 
 const Listing = mongoose.model("Listing",listingSchema);
 

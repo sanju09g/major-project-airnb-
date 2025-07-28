@@ -19,3 +19,16 @@ module.exports.reviewSchema = Joi.object({
         comment: Joi.string().required(),
     }).required(),
 });
+
+module.exports.bookingSchema = Joi.object({
+    booking: Joi.object({
+      fullName: Joi.string().trim().min(1).required(),
+      email: Joi.string().email().required(),
+      contact: Joi.string().pattern(/^\d{10}$/).required(),
+      NOP: Joi.number().integer().min(1).max(4).required(),
+      checkIn: Joi.date().required(),
+      checkOut: Joi.date().greater(Joi.ref("checkIn")).required(),
+      roomType: Joi.string().valid("Single", "Double", "Deluxe").required(),
+      collectionId: Joi.string().pattern(/^[0-9a-fA-F]{24}$/)
+    }).required()
+  });

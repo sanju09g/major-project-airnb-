@@ -14,6 +14,7 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 
 }
+
  const initDB = async()=>{
    await Listing.deleteMany({});
     initData.data = initData.data.map((obj)=>({...obj,owner:"66837f859f7a37dfd7dbe2ce"}));

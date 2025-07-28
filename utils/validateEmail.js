@@ -2,7 +2,7 @@ const axios = require("axios")
 
 
 const valdiateEmail = async(email)=>{
-const api_key = "f494cba3c19447f9a463a5f24e99e763";
+const api_key = "5accccf7c2f54c82896282bf8775f3ff";
 const url = `https://emailvalidation.abstractapi.com/v1/?api_key=${api_key}&email=${email}`;
 
 try {

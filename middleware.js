@@ -55,6 +55,20 @@ module.exports.validateReview = (req,res,next)=>{
       next();
     }
 };
+
+module.exports.validateBookingFromJoi = (req, res, next) => {
+  const { error } = bookingSchema.validate(req.body);
+
+  if (error) {
+    const errMsg = error.details.map(el => el.message).join(", ");
+    console.log("Booking validation failed from Joi");
+    throw new ExpressError(400, errMsg);
+  } else {
+    next();
+  }
+};
+
+
 module.exports.isReviewAuthor = async(req,res,next)=>{
   let {id, reviewId } = req.params;
   let review = await Review.findById(reviewId);

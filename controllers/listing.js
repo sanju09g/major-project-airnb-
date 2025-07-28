@@ -1,4 +1,7 @@
 const Listing = require("../models/listing");
+const Booking = require("../models/booking");
+const User = require("../models/user");
+const Review = require("../models/review");
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
@@ -55,7 +58,7 @@ module.exports.index = async(req,res)=>{
     let url = req.file.path;
     let filename = req.file.filename;
     
-    const newListing = new Listing(req.body.listing);
+     const newListing = new Listing(req.body.listing);
      newListing.owner = req.user._id;
      newListing.image = {url,filename};
      newListing.geometry = response.body.features[0].geometry;//coordinates 
@@ -94,9 +97,99 @@ module.exports.index = async(req,res)=>{
     req.flash("success","Listing Updated!");
     res.redirect(`/listings/${id}`);
 };
- module.exports.destroyListing =  async(req,res)=>{
-    let {id} = req.params;
-    await Listing.findByIdAndDelete(id);
-    req.flash("success","Listing Deleted!");
-    res.redirect("/listings");
- };
+module.exports.destroyListing = async (req, res) => {
+  let { id } = req.params;
+
+  // 1. Find all bookings related to this listing
+  const bookings = await Booking.find({ listingId: id });
+  console.log(bookings);
+
+  // 2. Remove booking IDs from all users
+  for (const booking of bookings) {
+      await User.updateMany(
+          { bookings: booking._id },
+          { $pull: { bookings: booking._id } }
+      );
+  }
+
+  // 3. Delete all related bookings
+  await Booking.deleteMany({ listingId: id });
+
+  // 4. Delete all related reviews
+  const listing = await Listing.findById(id);
+  if (listing && listing.reviews && listing.reviews.length > 0) {
+      await Review.deleteMany({ _id: { $in: listing.reviews } });
+  }
+
+  // 5. Finally, delete the listing itself
+  await Listing.findByIdAndDelete(id);
+
+  req.flash("success", "Listing, its bookings, and reviews deleted!");
+  res.redirect("/listings");
+};
+
+module.exports.renderBookingForm = async (req, res) => {
+  let { id } = req.params;
+  const bookingListing = await Listing.findById(id);
+
+  res.render("listings/booking.ejs", { bookingListing });
+};
+
+// 4. Book Listing
+module.exports.bookListing = async (req, res) => {
+  const { id } = req.params;
+  const listing = await Listing.findById(id);
+  const user = await User.findById(res.locals.currUser);
+  const booking = new Booking(req.body.booking);
+
+  booking.listingId = listing._id;
+  user.bookings.push(booking._id);
+  listing.isBooked = true;
+
+  await booking.save();
+  await user.save();
+  await listing.save();
+
+  req.flash("success", "Listing booked!");
+  res.redirect(`/listings/${id}`);
+};
+
+// 5. Cleanup Expired Bookings
+const cleanupExpiredBookings = async () => {
+  const expiredBookings = await Booking.find({
+      checkOut: { $lt: new Date() }
+  });
+
+  console.log("Expired Bookings:", expiredBookings);
+
+  for (const booking of expiredBookings) {
+      const users = await User.find({ bookings: booking.listingId });
+
+      for (const user of users) {
+          user.bookings.pull(booking.listingId);
+          await user.save();
+      }
+
+      // Optional: mark listing as available again
+      const listing = await Listing.findById(booking.listingId);
+      if (listing) {
+          listing.isBooked = false;
+          await listing.save();
+      }
+
+      // Optional: delete the booking itself
+      // await Booking.findByIdAndDelete(booking._id);
+  }
+};
+
+// 6. Show Bookings
+module.exports.showBookings = async (req, res) => {
+  let user = await User.findById(res.locals.currUser).populate({
+      path: "bookings",
+      populate: { path: "listingId" }
+  });
+
+  res.render("listings/mybookings.ejs", { user });
+};
+
+module.exports.cleanupExpiredBookings = cleanupExpiredBookings;

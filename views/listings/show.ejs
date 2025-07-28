@@ -11,6 +11,26 @@
       <h3 class="mb-3"><%= listing.title %></h3>
       <div class="card show-card listing-card">
         <img src="<%= listing.image.url %>" class="card-img-top show-img mb-2" alt="listing-img">
+        <div class="list-details">
+          <span><b>Owned by:</b> <%= listing.owner.username %></span>
+          <% if(!currUser._id.equals(listing.owner._id)) {%>
+          <form
+            id="book"
+            method="get"
+            action="/listings/booking/<%= listing._id %>"
+          >
+            <% if (listing.isBooked) { %>
+            <button type="button" class="btn disabled btn-secondary">
+              Booked
+            </button>
+            <% } else { %>
+            <button class="btn book-btn" type="submit">Book Now</button>
+            <% } %>
+          </form>
+          <% } %>
+           
+        </div>
+
         <div class="card-body">
           <div class="show-detail mb-2">
             <p class="card-text mb-1"><strong>Owned by:</strong> <%= listing.owner.username %></p>
