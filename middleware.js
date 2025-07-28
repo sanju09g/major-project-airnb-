@@ -1,6 +1,6 @@
 const Listing = require("./models/listing.js");
 const ExpressError = require("./utils/ExpressError.js");
-const {listingSchema , reviewSchema} = require("./schema.js");
+const {listingSchema , reviewSchema, bookingSchema} = require("./schema.js");
 const Review = require("./models/review.js");
 
 
@@ -34,7 +34,7 @@ module.exports.isLoggedIn = (req,res,next)=>{
       }
    next();
  }
- module.exports.validateListing = (req,res,next)=>{
+ module.exports.validateLsisting = (req,res,next)=>{
   let {error} = listingSchema.validate(req.body);
     if(error){
       let errMsg = error.details.map((el) => el.message).join(",");
