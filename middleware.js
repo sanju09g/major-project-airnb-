@@ -34,7 +34,7 @@ module.exports.isLoggedIn = (req,res,next)=>{
       }
    next();
  }
- module.exports.validateLsisting = (req,res,next)=>{
+ module.exports.validateListing = (req,res,next)=>{
   let {error} = listingSchema.validate(req.body);
     if(error){
       let errMsg = error.details.map((el) => el.message).join(",");
