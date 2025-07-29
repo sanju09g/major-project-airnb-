@@ -270,3 +270,7 @@ body {
 .visibility-down{
   visibility: hidden !important;
 }
+
+.small-logo{
+  font-size:1rem !important;
+}

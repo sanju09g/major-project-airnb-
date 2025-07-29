@@ -1,44 +1,63 @@
 <% layout("/layouts/boilerplate") %>
 
-<% if(user.bookings.length==0 ){ %>
+<style>
+    @media (max-width: 577px) {
+        .booking-heading {
+            font-size: 1.2rem !important;
+        }
+        .small-font {
+            font-size: 0.9rem !important;
+        }
+    }
+</style>
 
-  
-  <div class="d-flex flex-column justify-content-center align-items-center">
-    <h3>No Bookings</h3>
-    <form action="/listings" class="mt-2">
-      <button type="submit" class="btn btn-dark mt-2">Browse Hotels</button>
-    </form>
+<% if (user.bookings.length === 0) { %>
+  <div class="container mt-5">
+    <div class="row justify-content-center text-center">
+      <div class="col-12 col-sm-10 col-md-8">
+        <h3 class="booking-heading">No Bookings</h3>
+        <form action="/listings" class="mt-3">
+          <button type="submit" class="btn btn-dark">Browse Hotels</button>
+        </form>
+      </div>
+    </div>
   </div>
-  
-     <% } else{%>
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col"><i class="fa-regular fa-compass"></i></th>
-            <th scope="col">Wanderlust Hotel</th>
-            <th scope="col">CheckIn</th>
-            <th scope="col">CheckOut</th>
-            <th scope="col">Room Type</th>
-          </tr>
-        </thead>
-        <tbody>
-     <% user.bookings.forEach((booking, i) => { %>
-      <tr>
-        <th scope="row"><%= i + 1 %></th>
-
-        <td>
-          <% if (booking.listingId) { %>
-            <%=  booking.listingId.title %>
-          <% } else { %>
-            <em>Listing Deleted</em>
-          <% } %>
-        </td>
-
-        <td><%= booking.checkIn.toDateString() %></td>
-        <td><%= booking.checkOut.toDateString() %></td>
-        <td><%= booking.roomType %></td>
-      </tr>
-    <% }) %>
-    <% } %>
-  </tbody>
-</table>
+<% } else { %>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-12 col-md-11 col-lg-10">
+        <h3 class="mb-4 booking-heading">Your Bookings</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+              <tr class="text-center small-font">
+                <th scope="col"><i class="fa-regular fa-compass small-logo"></i></th>
+                <th scope="col">Wanderlust Hotel</th>
+                <th scope="col">CheckIn</th>
+                <th scope="col">CheckOut</th>
+                <th scope="col">Room Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% user.bookings.forEach((booking, i) => { %>
+                <tr class="text-center small-font">
+                  <th scope="row"><%= i + 1 %></th>
+                  <td>
+                    <% if (booking.listingId) { %>
+                      <%= booking.listingId.title %>
+                    <% } else { %>
+                      <em>Listing Deleted</em>
+                    <% } %>
+                  </td>
+                  <td><%= booking.checkIn.toDateString() %></td>
+                  <td><%= booking.checkOut.toDateString() %></td>
+                  <td><%= booking.roomType %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>
