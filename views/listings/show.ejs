@@ -95,7 +95,7 @@
           <div class="card h-100 p-3">
             <div class="card-body">
               <h5 class="card-title"><strong><%= review.author.username %></strong></h5>
-              <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
+              <p class="starability-result card-text small-stars" data-rating="<%= review.rating %>"></p>
               <p class="card-text"><%= review.comment %></p>
               <% if(currUser && review.author._id.equals(currUser._id)) { %>
               <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
