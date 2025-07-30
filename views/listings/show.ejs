@@ -20,11 +20,11 @@
             action="/listings/booking/<%= listing._id %>"
           >
             <% if (listing.isBooked) { %>
-            <button type="button" class="btn disabled btn-secondary">
+            <button type="button" class="btn disabled btn-secondary  mt-2">
               Booked
             </button>
             <% } else { %>
-            <button class="btn book-btn" type="submit">Book Now</button>
+            <button class="btn book-btn mt-2" type="submit">Book Now</button>
             <% } %>
           </form>
           <% } %>
