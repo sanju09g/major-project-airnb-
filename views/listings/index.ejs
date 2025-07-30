@@ -108,7 +108,7 @@
                     <div style="width: 100%;">
                       <form id="book" method="get" action="/listings/booking/<%= listing._id %>">
                         <% if (!listing.isBooked) { %>
-                          <span class="availability-label available">Check Availability</span>
+                          <span class="availability-label available">Available</span>
                         <% } else { %>
                           <span class="availability-label unavailable">Not Available</span>
                         <% } %>
