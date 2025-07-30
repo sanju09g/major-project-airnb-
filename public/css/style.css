@@ -249,7 +249,7 @@ body {
   white-space: nowrap;
 }
 #book{
-    
+  margin-top: -1rem !important;
   float: right !important;
  
 }
