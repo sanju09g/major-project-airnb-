@@ -97,10 +97,37 @@
               <h5 class="card-title"><strong><%= review.author.username %></strong></h5>
               <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
               <p class="card-text"><%= review.comment %></p>
-              <% if(currUser && review.author._id.equals(currUser._id)) { %>
-              <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-                <button class="btn btn-sm btn-dark">Delete</button>
-              </form>
+              <% if (currUser && (review.author._id.equals(currUser._id) || listing.owner._id.equals(currUser._id))) { %>
+                <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                  <button class="btn btn-sm btn-dark mb-2">Delete</button>
+                </form>
+              
+                <% if (review.author._id.equals(currUser._id)) { %>
+                  <button class="btn btn-sm btn-outline-secondary mb-2" onclick="toggleEditForm('<%= review._id %>')" type="button">Edit</button>
+              
+                  <form id="edit-form-<%= review._id %>" class="edit-form-collapse mt-2" method="POST"
+                    action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=PUT">
+                    
+                    <div class="form-group mb-2">
+                      <label for="edit-comment-<%= review._id %>">Edit Review:</label>
+                      <textarea class="form-control" name="review[comment]" required rows="3"><%= review.comment %></textarea>
+                    </div>
+              
+                    <div class="form-group mb-2">
+                      <label for="edit-rating-<%= review._id %>">Rating:</label>
+                      <select name="review[rating]" class="form-select">
+                        <% for (let i = 1; i <= 5; i++) { %>
+                          <option value="<%= i %>" <%= review.rating === i ? "selected" : "" %>>
+                            <%= i %> Star<%= i > 1 ? "s" : "" %>
+                          </option>
+                        <% } %>
+                      </select>
+                    </div>
+              
+                    <button class="btn btn-sm btn-primary" type="submit">Save</button>
+                    <button class="btn btn-sm btn-secondary" type="button" onclick="toggleEditForm('<%= review._id %>')">Cancel</button>
+                  </form>
+                <% } %>
               <% } %>
             </div>
           </div>
@@ -118,5 +145,11 @@
     </div>
   </div>
 </div>
+<script>
+  function toggleEditForm(reviewId) {
+    const form = document.getElementById(`edit-form-${reviewId}`);
+    form.classList.toggle('edit-form-show');
+  }
+</script>
 
 <script src="/css/js/map.js"></script>

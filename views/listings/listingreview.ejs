@@ -1,0 +1,40 @@
+<% layout("/layouts/boilerplate") %>
+
+<form
+  action="/listings/<%= listingId %>/reviews/<%= review._id %>?_method=PUT"
+  method="POST"
+  class="mt-3 needs-validation"
+  novalidate
+>
+  <div class="mt-3">
+    <label class="form-label rating"><h4>Rating</h4></label>
+    <fieldset class="starability-slot">
+      <% for (let i = 1; i <= 5; i++) { %>
+        <input
+          type="radio"
+          id="rate-<%= i %>"
+          name="review[rating]"
+          value="<%= i %>"
+          <% if (review.rating === i) { %>checked<% } %>
+        />
+        <label for="rate-<%= i %>" title="<%= ['Terrible','Not good','Average','Very good','Amazing'][i-1] %>">
+          <%= i %> star<%= i > 1 ? 's' : '' %>
+        </label>
+      <% } %>
+    </fieldset>
+  </div>
+
+  <div class="mt-3">
+    <label class="form-label" for="comment"><h4>Write Review</h4></label>
+    <textarea
+      class="form-control"
+      name="review[comment]"
+      id="comment"
+      required
+      rows="5"
+    ><%= review.comment %></textarea>
+    <div class="invalid-feedback">Comment cannot be empty!</div>
+  </div>
+
+  <button class="btn edit-btn mt-3" type="submit">Update</button>
+</form>

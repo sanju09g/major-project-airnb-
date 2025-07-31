@@ -61,7 +61,7 @@ module.exports.validateBookingFromJoi = (req, res, next) => {
 
   if (error) {
     const errMsg = error.details.map(el => el.message).join(", ");
-    console.log("Booking validation failed from Joi");
+    req.flash("error","Contact or Email is already registered!");
     throw new ExpressError(400, errMsg);
   } else {
     next();

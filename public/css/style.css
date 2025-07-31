@@ -322,3 +322,19 @@ body {
     padding: 0.25rem 0.6rem;
   }
 }
+
+.one-line{
+  display: inline !important;
+}
+
+.edit-form-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.edit-form-show {
+  max-height: 500px;
+  padding: 10px 0; 
+}
+
