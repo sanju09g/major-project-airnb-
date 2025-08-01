@@ -138,11 +138,27 @@ module.exports.renderBookingForm = async (req, res) => {
 // 4. Book Listing
 module.exports.bookListing = async (req, res) => {
   const { id } = req.params;
+
   const listing = await Listing.findById(id);
   const user = await User.findById(res.locals.currUser);
-  const booking = new Booking(req.body.booking);
+  const { email, contact } = req.body.booking;
 
+  // 🔒 Check if email or contact already exists in any booking
+  const existing = await Booking.findOne({
+    $or: [
+      { email: email },
+      { contact: contact }
+    ]
+  });
+
+  if (existing) {
+    req.flash("error", "Email or contact number is already used for a booking.");
+    return res.redirect(`/listings/${id}`);
+  }
+
+  const booking = new Booking(req.body.booking);
   booking.listingId = listing._id;
+
   user.bookings.push(booking._id);
   listing.isBooked = true;
 
@@ -157,30 +173,32 @@ module.exports.bookListing = async (req, res) => {
 // 5. Cleanup Expired Bookings
 const cleanupExpiredBookings = async () => {
   const expiredBookings = await Booking.find({
-      checkOut: { $lt: new Date() }
+    checkOut: { $lt: new Date() }
   });
 
-  console.log("Expired Bookings:", expiredBookings);
+  console.log("Expired Bookings:", expiredBookings.length);
 
   for (const booking of expiredBookings) {
-      const users = await User.find({ bookings: booking.listingId });
+    // Find users who have this booking
+    const users = await User.find({ bookings: booking._id });
 
-      for (const user of users) {
-          user.bookings.pull(booking.listingId);
-          await user.save();
-      }
+    for (const user of users) {
+      user.bookings.pull(booking._id);
+      await user.save();
+    }
 
-      // Optional: mark listing as available again
-      const listing = await Listing.findById(booking.listingId);
-      if (listing) {
-          listing.isBooked = false;
-          await listing.save();
-      }
+    // Unbook the listing
+    const listing = await Listing.findById(booking.listingId);
+    if (listing) {
+      listing.isBooked = false;
+      await listing.save();
+    }
 
-      // Optional: delete the booking itself
-      // await Booking.findByIdAndDelete(booking._id);
+    // Optional: delete the booking itself
+    // await Booking.findByIdAndDelete(booking._id);
   }
 };
+
 
 // 6. Show Bookings
 module.exports.showBookings = async (req, res) => {

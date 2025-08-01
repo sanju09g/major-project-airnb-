@@ -66,9 +66,9 @@ cron.schedule("0 0 * * *", async () => {
     console.log("⏰ Running auto-cleanup of expired bookings...");
     try {
       await cleanupExpiredBookings();
-      console.log("✅ Cleanup complete.");
+      console.log("Cleanup complete.");
     } catch (error) {
-      console.error("❌ Cleanup failed:", error);
+      console.error("Cleanup failed:", error);
     }
   });
 

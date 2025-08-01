@@ -324,7 +324,7 @@ body {
 }
 
 .one-line{
-  display: inline !important;
+  display: inline-block !important;
 }
 
 .edit-form-collapse {
@@ -338,3 +338,10 @@ body {
   padding: 10px 0; 
 }
 
+.save{
+  background-color: #fe424d !important;
+}
+
+.save:hover{
+  background-color: #fe424fe2 !important;
+}
