@@ -7,11 +7,9 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const port = 8080;
-const cron = require("node-cron");
 const path = require("path");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
-const { cleanupExpiredBookings } = require("./controllers/listing.js"); 
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -62,15 +60,6 @@ const sessionOptions = {
     },
 };
 
-cron.schedule("0 0 * * *", async () => {
-    console.log("⏰ Running auto-cleanup of expired bookings...");
-    try {
-      await cleanupExpiredBookings();
-      console.log("Cleanup complete.");
-    } catch (error) {
-      console.error("Cleanup failed:", error);
-    }
-  });
 
 app.use(session(sessionOptions));
 app.use(flash());

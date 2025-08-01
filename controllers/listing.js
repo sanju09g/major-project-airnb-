@@ -153,7 +153,7 @@ module.exports.bookListing = async (req, res) => {
 
   if (existing) {
     req.flash("error", "Email or contact number is already used for a booking.");
-    return res.redirect(`/listings/${id}`);
+    return res.redirect(`/listings/booking/${id}`);
   }
 
   const booking = new Booking(req.body.booking);
@@ -172,6 +172,7 @@ module.exports.bookListing = async (req, res) => {
 
 // 5. Cleanup Expired Bookings
 const cleanupExpiredBookings = async () => {
+  console.log("Now:", new Date().toISOString());
   const expiredBookings = await Booking.find({
     checkOut: { $lt: new Date() }
   });
