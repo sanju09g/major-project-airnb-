@@ -122,6 +122,6 @@ Wanderlust/
 
 👤 Author
 Name: Sanjit Singh
-GitHub: @sanju09g
-LinkedIn: Sanjit Singh
+GitHub: [@sanju09g](https://github.com/sanju09g/)
+LinkedIn: [Sanjit Singh](https://www.linkedin.com/in/sanjitsingh004/)
 
