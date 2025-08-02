@@ -350,7 +350,7 @@ body {
   display: none;
 }
 
-@media (max-width: 527px) {
+@media (max-width: 642px) {
   /* ↓ Explore link (e.g. 'Become a host') */
   .navbar-nav .nav-link {
     font-size: 0.6rem !important;
