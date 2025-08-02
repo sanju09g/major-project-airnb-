@@ -42,21 +42,22 @@ Wanderlust is a full-stack hotel booking platform inspired by Airbnb. It allows 
 - node-cron
   
 
-🌐 Live Demo
-👉 Try it Live ([Link](https://major-project-airnb.onrender.com/listings))
+## 🌐 Live Demo  
+👉 [Try it Live](https://major-project-airnb.onrender.com/listings)
 
-📸 Screenshots
-🔐 Login Page
-(Add Screenshot)
+## 📸 Screenshots
 
-🏡 Listings Page
-(Add Screenshot)
+🔐 **Signup Page**  
+![Signup](https://github.com/sanju09g/major-project-airnb-/raw/main/Screenshots/signup.png)
 
-📝 Create Listing Page
-(Add Screenshot)
+🏡 **Listings Page**  
+![Home Page](https://github.com/sanju09g/major-project-airnb-/raw/main/Screenshots/home.png)
 
-⭐ Review Section
-(Add Screenshot)
+📝 **Show Listing Page**  
+![Show Page](https://github.com/sanju09g/major-project-airnb-/raw/main/Screenshots/show.png)
+
+⭐ **Review Section**  
+![Review](https://github.com/sanju09g/major-project-airnb-/raw/main/Screenshots/review.png)
 
 📁 View All Screenshots
 
@@ -67,68 +68,58 @@ Edit
 Wanderlust/
 │
 ├── models/
+    ├── booking.js
 │   ├── listing.js
 │   ├── review.js
 │   └── user.js
 │
 ├── routes/
-│   ├── listings.js
-│   ├── reviews.js
-│   └── users.js
+│   ├── listing.js
+│   ├── review.js
+│   └── user.js
 │
+├── init/
+|   └── data.js
+|   └── index.js
+|  
 ├── controllers/
-│   ├── listingController.js
-│   ├── reviewController.js
-│   └── userController.js
+│   ├── listing.js
+│   ├── review.js
+│   └── user.js
 │
 ├── views/
+    ├── includes/
+│   ├── layouts/
 │   ├── listings/
-│   ├── reviews/
-│   └── partials/
+│   └── users/
 │
 ├── public/
+|   |── rating.css
 │   ├── CSS/
-│   └── images/
-│
+|   |     └── js
+│   |        └── map.js
+│   |        └── script.js
+|   |── style.css
+
 ├── middleware/
 │   └── authMiddleware.js
 │
 ├── utils/
 │   └── ExpressError.js
-│
+|    └── validateEmail.js
+|    └── wrapAsync.js
+|
+│── crodRunner.js
+├── error.js
+├── middleware.js
 ├── app.js
+├── cloudConfig.js
+├── schema.js
+├── package.json
+├── package-lock.json
+├── .gitignore
 └── .env
-🧑‍💻 Getting Started
-Follow these steps to run the project locally:
 
-1. Clone the repository
-bash
-Copy
-Edit
-git clone https://github.com/sanju09g/Wanderlust.git
-cd Wanderlust
-2. Install dependencies
-bash
-Copy
-Edit
-npm install
-3. Create .env file in the root directory
-env
-Copy
-Edit
-DB_URL="your_mongodb_connection_string"
-SECRET="your_secret_key"
-4. Start the server
-bash
-Copy
-Edit
-node app.js
-Then, open your browser and navigate to:
-
-arduino
-Copy
-Edit
-http://localhost:3000
 👤 Author
 Name: Sanjit Singh
 GitHub: @sanju09g
