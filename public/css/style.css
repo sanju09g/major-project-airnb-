@@ -345,3 +345,40 @@ body {
 .save:hover{
   background-color: #fe424fe2 !important;
 }
+
+.menu-icon {
+  display: none;
+}
+
+@media (max-width: 527px) {
+  /* ↓ Explore link (e.g. 'Become a host') */
+  .navbar-nav .nav-link {
+    font-size: 0.6rem !important;
+  }
+
+  /* ↓ Menu text replaced by icon */
+  .auth-dropdown .menu-text {
+    display: none !important;
+  }
+
+  .auth-dropdown .menu-icon {
+    display: inline !important;
+    font-size: 1rem;
+  }
+
+  /* ↓ Shrink the search-form slightly */
+  .search-form {
+    width: 60% !important;
+  }
+
+  /* (Optional but recommended) Adjust search input and button padding if it feels tight */
+  .search-inp {
+    font-size: 0.7rem !important;
+    padding: 0 0.5rem 0 1rem !important;
+  }
+
+  .search-btn {
+    font-size: 0.75rem !important;
+    padding: 0 0.8rem 0 1rem !important;
+  }
+}
